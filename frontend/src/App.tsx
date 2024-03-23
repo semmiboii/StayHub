@@ -6,6 +6,8 @@ import {
 } from "react-router-dom";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
+import AddHotel from "./pages/AddHotel";
+import ProtectedRoute from "./utils/ProtectedRoute";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +32,16 @@ const router = createBrowserRouter([
       <Layout>
         <Login />
       </Layout>
+    ),
+  },
+  {
+    path: "/add-hotel",
+    element: (
+      <ProtectedRoute>
+        <Layout>
+          <AddHotel />
+        </Layout>
+      </ProtectedRoute>
     ),
   },
   {
