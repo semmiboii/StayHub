@@ -64,4 +64,15 @@ router.post(
   }
 );
 
+//endpoint - /
+
+router.get("/", verifyToken, async (req: Request, res: Response) => {
+  try {
+    const hotels = await Hotel.find({ userId: req.userId });
+    res.json(hotels);
+  } catch {
+    res.status(500).json({ message: "ERROR_FETCHING_HOTELS " });
+  }
+});
+
 export default router;

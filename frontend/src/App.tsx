@@ -8,6 +8,7 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import AddHotel from "./pages/AddHotel";
 import ProtectedRoute from "./utils/ProtectedRoute";
+import MyHotels from "./pages/MyHotels";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,16 @@ const router = createBrowserRouter([
       <ProtectedRoute>
         <Layout>
           <AddHotel />
+        </Layout>
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/my-hotels",
+    element: (
+      <ProtectedRoute>
+        <Layout>
+          <MyHotels />
         </Layout>
       </ProtectedRoute>
     ),
