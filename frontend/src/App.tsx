@@ -9,6 +9,7 @@ import Login from "./pages/Login";
 import AddHotel from "./pages/AddHotel";
 import ProtectedRoute from "./utils/ProtectedRoute";
 import MyHotels from "./pages/MyHotels";
+import EditHotel from "./pages/EditHotel";
 
 const router = createBrowserRouter([
   {
@@ -54,6 +55,16 @@ const router = createBrowserRouter([
         </Layout>
       </ProtectedRoute>
     ),
+  },
+  {
+    path: "/edit-hotel/:hotelId",
+    element: ( 
+        <ProtectedRoute>
+            <Layout>
+              <EditHotel/>
+            </Layout>
+        </ProtectedRoute>
+    )
   },
   {
     path: "*",
