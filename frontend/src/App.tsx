@@ -10,6 +10,7 @@ import AddHotel from "./pages/AddHotel";
 import ProtectedRoute from "./utils/ProtectedRoute";
 import MyHotels from "./pages/MyHotels";
 import EditHotel from "./pages/EditHotel";
+import Search from "./pages/Search"
 
 const router = createBrowserRouter([
   {
@@ -18,7 +19,9 @@ const router = createBrowserRouter([
   },
   {
     path: "/search",
-    element: <Layout>Search-Page</Layout>,
+    element: <Layout>
+        <Search/>
+    </Layout>,
   },
   {
     path: "/register",
