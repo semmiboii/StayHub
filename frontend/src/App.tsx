@@ -10,7 +10,8 @@ import AddHotel from "./pages/AddHotel";
 import ProtectedRoute from "./utils/ProtectedRoute";
 import MyHotels from "./pages/MyHotels";
 import EditHotel from "./pages/EditHotel";
-import Search from "./pages/Search"
+import Search from "./pages/Search";
+import Detail from "./pages/Detail";
 
 const router = createBrowserRouter([
   {
@@ -19,15 +20,25 @@ const router = createBrowserRouter([
   },
   {
     path: "/search",
-    element: <Layout>
-        <Search/>
-    </Layout>,
+    element: (
+      <Layout>
+        <Search />
+      </Layout>
+    ),
   },
   {
     path: "/register",
     element: (
       <Layout>
         <Register />
+      </Layout>
+    ),
+  },
+  {
+    path: "/detail/:hotelId",
+    element: (
+      <Layout>
+        <Detail />
       </Layout>
     ),
   },
@@ -61,13 +72,13 @@ const router = createBrowserRouter([
   },
   {
     path: "/edit-hotel/:hotelId",
-    element: ( 
-        <ProtectedRoute>
-            <Layout>
-              <EditHotel/>
-            </Layout>
-        </ProtectedRoute>
-    )
+    element: (
+      <ProtectedRoute>
+        <Layout>
+          <EditHotel />
+        </Layout>
+      </ProtectedRoute>
+    ),
   },
   {
     path: "*",
