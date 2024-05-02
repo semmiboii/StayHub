@@ -2,10 +2,26 @@ import express, { Request, Response } from "express";
 import User from "../models/user";
 import jwt from "jsonwebtoken";
 import { check, validationResult } from "express-validator";
+import verifyToken from "../middleware/auth";
 
 const router = express.Router();
 
 // ENDPOINT - /api/users/register
+
+router.get("/me", verifyToken, async (req: Request, res: Response) => {
+  const userId = req.userId;
+
+  try {
+    const user = await User.findById(userId).select("-password");
+    if (!user) {
+      return res.status(400).json({ message: "USER_NOT_FOUND" });
+    }
+    res.json(user);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "SOMETHING_WENT_WRONG " });
+  }
+});
 
 router.post(
   "/register",
@@ -43,7 +59,7 @@ router.post(
         process.env.JWT_SECRET_KEY as string,
         {
           expiresIn: "1d",
-        }
+        },
       );
 
       // SETTING AUTH_TOKEN MADE BY JWT COOKIE
@@ -58,7 +74,7 @@ router.post(
       console.log(err);
       res.status(500).send({ message: "SOMETHING_WENT_WRONG" });
     }
-  }
+  },
 );
 
 export default router;
