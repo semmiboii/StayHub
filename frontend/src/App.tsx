@@ -12,11 +12,18 @@ import MyHotels from "./pages/MyHotels";
 import EditHotel from "./pages/EditHotel";
 import Search from "./pages/Search";
 import Detail from "./pages/Detail";
+import Booking from "./pages/Booking";
+import MyBookings from "./pages/MyBookings";
+import Home from "./pages/Home";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout>Home Page</Layout>,
+    element: (
+      <Layout>
+        <Home />
+      </Layout>
+    ),
   },
   {
     path: "/search",
@@ -76,6 +83,26 @@ const router = createBrowserRouter([
       <ProtectedRoute>
         <Layout>
           <EditHotel />
+        </Layout>
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/hotel/:hotelId/booking",
+    element: (
+      <ProtectedRoute>
+        <Layout>
+          <Booking />
+        </Layout>
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/my-bookings",
+    element: (
+      <ProtectedRoute>
+        <Layout>
+          <MyBookings />
         </Layout>
       </ProtectedRoute>
     ),
