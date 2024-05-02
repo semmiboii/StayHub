@@ -6,6 +6,12 @@ import {
 } from "react-router-dom";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
+import AddHotel from "./pages/AddHotel";
+import ProtectedRoute from "./utils/ProtectedRoute";
+import MyHotels from "./pages/MyHotels";
+import EditHotel from "./pages/EditHotel";
+import Search from "./pages/Search";
+import Detail from "./pages/Detail";
 
 const router = createBrowserRouter([
   {
@@ -14,7 +20,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/search",
-    element: <Layout>Search-Page</Layout>,
+    element: (
+      <Layout>
+        <Search />
+      </Layout>
+    ),
   },
   {
     path: "/register",
@@ -25,11 +35,49 @@ const router = createBrowserRouter([
     ),
   },
   {
+    path: "/detail/:hotelId",
+    element: (
+      <Layout>
+        <Detail />
+      </Layout>
+    ),
+  },
+  {
     path: "/login",
     element: (
       <Layout>
         <Login />
       </Layout>
+    ),
+  },
+  {
+    path: "/add-hotel",
+    element: (
+      <ProtectedRoute>
+        <Layout>
+          <AddHotel />
+        </Layout>
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/my-hotels",
+    element: (
+      <ProtectedRoute>
+        <Layout>
+          <MyHotels />
+        </Layout>
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/edit-hotel/:hotelId",
+    element: (
+      <ProtectedRoute>
+        <Layout>
+          <EditHotel />
+        </Layout>
+      </ProtectedRoute>
     ),
   },
   {
