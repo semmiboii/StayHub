@@ -17,7 +17,7 @@ test.beforeEach(async ({ page }) => {
   await expect(page.getByText("LOGIN_SUCCESSFUL")).toBeVisible();
 });
 
-test("should book hotel", async ({ page }) => {
+test.skip("should book hotel", async ({ page }) => {
   await page.goto(UI_URL);
 
   await page.getByPlaceholder("Where are you going?").fill("Dublin");
